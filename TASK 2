@@ -1,0 +1,28 @@
+import java.util.Scanner;
+class GuessTheNumber
+{
+    public static void main()
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=(int)(Math.random()*20)+1;
+        for(int i=1;;i++)
+        {
+        System.out.print("Enter Your Guessed Number : ");
+        int num=sc.nextInt();
+        if(num==n)
+        {
+            System.out.println("Hurray!! You Win\n");
+            System.out.println("Number Of Chances Taken : "+i+"\n");
+            break;
+        }
+        else if(num>n)
+        {
+            System.out.println("Number Guessed Is Bigger Than Generated Number\n");
+        }
+        else
+        {
+             System.out.println("Number Guessed Is Smaller Than Generated Number\n");
+        }
+    }
+    }
+}
