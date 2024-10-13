@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class TASK1 {
+
+    public static double celsiusToFahrenheit(double c) {
+        return (c * 9/5) + 32;
+    }
+
+    public static double celsiusToKelvin(double c) {
+        return c + 273.15;
+    }
+
+    public static double fahrenheitToCelsius(double f) {
+        return (f - 32) * 5/9;
+    }
+
+    public static double fahrenheitToKelvin(double f) {
+        double c = fahrenheitToCelsius(f);
+        return celsiusToKelvin(c);
+    }
+
+    public static double kelvinToCelsius(double k) {
+        return k - 273.15;
+    }
+
+    public static double kelvinToFahrenheit(double k) {
+        double c = kelvinToCelsius(k);
+        return celsiusToFahrenheit(c);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the temperature value: ");
+        double temperature = scanner.nextDouble();
+
+        System.out.print("Enter the unit of measurement (C for Celsius, F for Fahrenheit, K for Kelvin): ");
+        char unit = scanner.next().toUpperCase().charAt(0);
+
+        switch (unit) {
+            case 'C':
+                double fahrenheit = celsiusToFahrenheit(temperature);
+                double kelvin = celsiusToKelvin(temperature);
+                System.out.printf("%.2f °C is %.2f °F and %.2f K.%n", temperature, fahrenheit, kelvin);
+                break;
+
+            case 'F':
+                double celsius = fahrenheitToCelsius(temperature);
+                kelvin = fahrenheitToKelvin(temperature);
+                System.out.printf("%.2f °F is %.2f °C and %.2f K.%n", temperature, celsius, kelvin);
+                break;
+
+            case 'K':
+                celsius = kelvinToCelsius(temperature);
+                fahrenheit = kelvinToFahrenheit(temperature);
+                System.out.printf("%.2f K is %.2f °C and %.2f °F.%n", temperature, celsius, fahrenheit);
+                break;
+
+            default:
+                System.out.println("Invalid unit. Please enter C, F, or K.");
+        }
+
+        scanner.close();
+    }
+}
